@@ -1,7 +1,20 @@
+'use strict';
+
 module.exports = function(grunt) {
+    // Display time per task
+    require('time-grunt')(grunt);
+    // Load all grunt packages
+    require('load-grunt-tasks')(grunt);
+
     // Project Configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        // Paths
+        exponential: {
+            src: '',
+            dev: '',
+            prod: ''
+        },
         watch: {
             jade: {
                 files: ['app/views/**'],
@@ -68,16 +81,8 @@ module.exports = function(grunt) {
         }
     });
 
-    //Load NPM tasks 
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-mocha-test');
-    grunt.loadNpmTasks('grunt-nodemon');
-    grunt.loadNpmTasks('grunt-concurrent');
-    grunt.loadNpmTasks('grunt-env');
-
     //Making grunt default to force in order not to break the project.
-    grunt.option('force', true);
+    //grunt.option('force', true);
 
     //Default task(s).
     grunt.registerTask('default', ['jshint', 'concurrent']);
@@ -85,3 +90,4 @@ module.exports = function(grunt) {
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest']);
 };
+
