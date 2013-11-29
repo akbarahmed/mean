@@ -1,5 +1,10 @@
 .DS_Store
 .nodemonignore
 .sass-cache/
-node_modules/
-public/lib
+bower_components
+node_modules
+
+# Files copied from bower packages
+public/css/lib
+public/fonts/lib
+public/js/lib
