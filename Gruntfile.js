@@ -92,27 +92,27 @@ module.exports = function(grunt) {
                 },{
                     expand: true,
                     cwd: 'bower_components/angular',
-                    src: [ 'angular.min.js', 'angular.min.js.map' ],
+                    src: [ 'angular.js', 'angular.min.js', 'angular.min.js.map' ],
                     dest: 'public/js/lib/angular'
                 },{
                     expand: true,
                     cwd: 'bower_components/angular-route',
-                    src: [ 'angular-route.min.js', 'angular-route.min.js.map' ],
+                    src: [ 'angular-route.js', 'angular-route.min.js', 'angular-route.min.js.map' ],
                     dest: 'public/js/lib/angular'
                 },{
                     expand: true,
                     cwd: 'bower_components/angular-cookies',
-                    src: [ 'angular-cookies.min.js', 'angular-cookies.min.js.map' ],
+                    src: [ 'angular-cookies.js', 'angular-cookies.min.js', 'angular-cookies.min.js.map' ],
                     dest: 'public/js/lib/angular'
                 },{
                     expand: true,
                     cwd: 'bower_components/angular-resource',
-                    src: [ 'angular-resource.min.js', 'angular-resource.min.js.map' ],
+                    src: [ 'angular-resource.js', 'angular-resource.min.js', 'angular-resource.min.js.map' ],
                     dest: 'public/js/lib/angular'
                 },{
                     expand: true,
                     cwd: 'bower_components/angular-bootstrap',
-                    src: [ 'ui-bootstrap.min.js', 'ui-bootstrap-tpls.min.js' ],
+                    src: [ 'ui-bootstrap.js', 'ui-bootstrap.min.js', 'ui-bootstrap-tpls.js', 'ui-bootstrap-tpls.min.js' ],
                     dest: 'public/js/lib/angular'
                 },{
                     expand: true,
