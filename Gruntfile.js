@@ -9,12 +9,37 @@ module.exports = function(grunt) {
     // Project Configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+
         // Paths
         exponential: {
             src: '',
             dev: '',
             prod: ''
         },
+
+        express: {
+            options: {
+                port: process.env.PORT || 3000 
+            },
+            dev: {
+                options: {
+                    script: 'server.js'
+                }
+            },
+            prod: {
+                options: {
+                    script: 'server.js',
+                    node_env: 'production'
+                }
+            }
+        },
+
+        open: {
+            server: {
+                url: 'http://localhost:<%= express.options.port %>'
+            }
+        },
+
         watch: {
             jade: {
                 files: ['app/views/**'],
@@ -42,9 +67,63 @@ module.exports = function(grunt) {
                 }
             }
         },
+
         jshint: {
             all: ['gruntfile.js', 'public/js/**/*.js', 'test/**/*.js', 'app/**/*.js']
         },
+
+        copy: {
+            bower: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components/bootstrap/dist/css',
+                    src: [ 'bootstrap.css', 'bootstrap-theme.css' ],
+                    dest: 'public/css/lib/bootstrap'
+                }, {
+                    expand: true,
+                    cwd: 'bower_components/bootstrap/dist/fonts',
+                    src: [ '*' ],
+                    dest: 'public/css/lib/fonts'
+                }, {
+                    expand: true,
+                    cwd: 'bower_components/bootstrap/dist/js',
+                    src: [ 'bootstrap.js' ],
+                    dest: 'public/js/lib/bootstrap'
+                },{
+                    expand: true,
+                    cwd: 'bower_components/angular',
+                    src: [ 'angular.min.js', 'angular.min.js.map' ],
+                    dest: 'public/js/lib/angular'
+                },{
+                    expand: true,
+                    cwd: 'bower_components/angular-route',
+                    src: [ 'angular-route.min.js', 'angular-route.min.js.map' ],
+                    dest: 'public/js/lib/angular'
+                },{
+                    expand: true,
+                    cwd: 'bower_components/angular-cookies',
+                    src: [ 'angular-cookies.min.js', 'angular-cookies.min.js.map' ],
+                    dest: 'public/js/lib/angular'
+                },{
+                    expand: true,
+                    cwd: 'bower_components/angular-resource',
+                    src: [ 'angular-resource.min.js', 'angular-resource.min.js.map' ],
+                    dest: 'public/js/lib/angular'
+                },{
+                    expand: true,
+                    cwd: 'bower_components/angular-bootstrap',
+                    src: [ 'ui-bootstrap.min.js', 'ui-bootstrap-tpls.min.js' ],
+                    dest: 'public/js/lib/angular'
+                },{
+                    expand: true,
+                    flatten: true,
+                    cwd: 'bower_components/angular-ui-utils/modules',
+                    src: [ 'route/route.js' ],
+                    dest: 'public/js/lib/angular'
+                }]
+            }
+        },
+
         nodemon: {
             dev: {
                 options: {
@@ -62,12 +141,19 @@ module.exports = function(grunt) {
                 }
             }
         },
+        //concurrent: {
+            //tasks: ['nodemon', 'watch'], 
+            //options: {
+                //logConcurrentOutput: true
+            //}
+        //},
+
         concurrent: {
-            tasks: ['nodemon', 'watch'], 
-            options: {
-                logConcurrentOutput: true
-            }
+            server: [
+                'copy:bower'
+            ]
         },
+
         mochaTest: {
             options: {
                 reporter: 'spec'
@@ -84,8 +170,9 @@ module.exports = function(grunt) {
     //Making grunt default to force in order not to break the project.
     //grunt.option('force', true);
 
-    //Default task(s).
     grunt.registerTask('default', ['jshint', 'concurrent']);
+    //grunt.registerTask('server', ['jshint', 'express:dev', 'open', 'watch']);
+    grunt.registerTask('server', ['express:dev', 'open', 'watch']);
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest']);
