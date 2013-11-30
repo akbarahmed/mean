@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" itemscope="itemscope" itemtype="http://schema.org/Product">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Exponential UnityJS: {{title}}</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="Exponential UnityJS">
+    <link href="/img/icons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+    <!-- Facebook Open Graph (OG) -->
+    <meta property="fb:app_id" content="APP_ID">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="Exponential UnityJS">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="APP_URL">
+    <meta property="og:image" content="APP_LOGO">
+    <meta property="og:site_name" content="Exponential UnityJS">
+    <meta property="fb:admins" content="APP_ADMIN">
+
+    <link rel="stylesheet" href="/css/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/css/lib/bootstrap/bootstrap-theme.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/views/articles.css">
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+    {{> common/navbar}}
+    <section class="content">
+        <section class="container">
+            {{{body}}}
+        </section>
+    </section>
+    {{> common/footer}}
+</body>
+</html>

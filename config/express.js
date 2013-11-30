@@ -1,5 +1,7 @@
 
 var express    = require('express'),
+    exphbs     = require('express3-handlebars'),
+    helpers    = require('../server/views/helpers'),
     mongoStore = require('connect-mongo')(express),
     flash      = require('connect-flash'),
     helpers    = require('view-helpers'),
@@ -28,9 +30,32 @@ module.exports = function(app, passport, db) {
         app.use(express.logger('dev'));
     }
 
+    // Handlebars
+    var hbs = exphbs.create({
+        defaultLayout: 'main',
+        extname: '.hbs',
+        helpers: helpers,
+        layoutsDir: 'server/views/layouts/',
+        partialsDir: [
+            'server/views/partials/'
+        ]
+    });
+    app.engine('hbs', hbs.engine);
+    app.set('views', config.root + '/server/views');
+
+    /*
+    app.engine('hbs', exphbs({
+        defaultLayout: 'main',
+        extname: '.hbs'
+    }));
+    */
+    app.set('view engine', 'hbs');
+    //app.set('view engine', 'handlebars');
+    //app.set('views', config.root + '/app/views');
+
     // Set views path, template engine and default layout
-    app.set('views', config.root + '/app/views');
-    app.set('view engine', 'jade');
+    //app.set('views', config.root + '/app/views');
+    //app.set('view engine', 'jade');
 
     // Enable jsonp
     app.enable("jsonp callback");

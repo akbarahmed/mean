@@ -1,8 +1,10 @@
 /**
- * Module dependencies.
+ * Authentication (login and signup) for users
+ * @module controllers/users 
  */
-var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+var mongoose = require('mongoose');
+
+var User = mongoose.model('User');
 
 /**
  * Auth callback
@@ -26,8 +28,12 @@ exports.signin = function(req, res) {
  */
 exports.signup = function(req, res) {
     res.render('users/signup', {
+        // both uses of title work
         title: 'Sign up',
         user: new User()
+        //helpers: {
+        //    title: function() { return 'Signup'; }
+        //}
     });
 };
 
@@ -101,3 +107,4 @@ exports.user = function(req, res, next, id) {
             next();
         });
 };
+

@@ -41,10 +41,16 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            jade: {
-                files: ['app/views/**'],
+            //jade: {
+                //files: ['app/views/**'],
+                //options: {
+                    //livereload: true,
+                //},
+            //},
+            handlebars: {
+                files: ['server/views/**'],
                 options: {
-                    livereload: true,
+                    livereload: true
                 },
             },
             js: {

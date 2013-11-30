@@ -38,7 +38,8 @@
     "grunt": "latest",
     "grunt-cli": "latest",
     "grunt-env": "latest",
-    "colors": "~0.6.2"
+    "colors": "~0.6.2",
+    "express3-handlebars": "~0.5.0"
   },
   "devDependencies": {
     "supertest": "latest",
