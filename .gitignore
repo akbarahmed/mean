@@ -8,3 +8,6 @@ node_modules
 public/css/lib
 public/fonts/lib
 public/js/lib
+
+# Temp files
+.swp
