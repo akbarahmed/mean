@@ -75,7 +75,10 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            all: ['gruntfile.js', 'public/js/**/*.js', 'test/**/*.js', 'app/**/*.js']
+            all: ['gruntfile.js', 'public/js/**/*.js', 'test/**/*.js', 'app/**/*.js'],
+            options: {
+                ignores: ['public/js/lib/**/*.js']
+            }
         },
 
         copy: {
@@ -178,7 +181,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['jshint', 'concurrent']);
     //grunt.registerTask('server', ['jshint', 'express:dev', 'open', 'watch']);
-    grunt.registerTask('server', ['express:dev', 'open', 'watch']);
+    grunt.registerTask('server', ['jshint', 'express:dev', 'open', 'watch']);
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest']);
