@@ -1,6 +1,6 @@
 module.exports = function(app, passport, auth) {
     //User Routes
-    var users = require('../../app/controllers/users');
+    var users = require('../controllers/users');
     app.get('/signin', users.signin);
     app.get('/signup', users.signup);
     app.get('/signout', users.signout);
@@ -72,7 +72,7 @@ module.exports = function(app, passport, auth) {
 //    app.param('articleId', articles.article);
 
     //Home route
-    var index = require('../../app/controllers/index');
+    var index = require('../controllers/index');
     app.get('/', index.render);
     // Testing route for using Angular with HTMl5 Push State
     //app.get('/app', index.render);

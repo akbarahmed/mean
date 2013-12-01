@@ -3,7 +3,7 @@
  */
 module.exports = function(app, passport, auth) {
     //Article Routes
-    var articles = require('../../app/controllers/articles');
+    var articles = require('../controllers/articles');
     app.get('/articles', articles.all);
     app.post('/articles', auth.requiresLogin, articles.create);
     app.get('/articles/:articleId', articles.show);
