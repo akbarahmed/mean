@@ -74,6 +74,9 @@ module.exports = function(app, passport, auth) {
     //Home route
     var index = require('../app/controllers/index');
     app.get('/', index.render);
+    // Testing route for using Angular with HTMl5 Push State
+    //app.get('/app', index.render);
+    //app.get('*', index.render);
 
 };
 
