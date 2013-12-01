@@ -42,8 +42,7 @@ try {
 }
 
 // Load Mongoose models
-var models_path = __dirname + '/app/models';
-var walk = function(path) {
+var loadModels = function(path) {
     fs.readdirSync(path).forEach(function(file) {
         var newPath = path + '/' + file;
         var stat = fs.statSync(newPath);
@@ -52,11 +51,11 @@ var walk = function(path) {
                 require(newPath);
             }
         } else if (stat.isDirectory()) {
-            walk(newPath);
+            loadModels(newPath);
         }
     });
 };
-walk(models_path);
+loadModels(dirServerModels);
 
 // bootstrap passport config
 require('./config/passport')(passport);
@@ -66,7 +65,7 @@ var app = express();
 // express settings
 require('./config/express')(app, passport, db);
 
-// Load all Express routes
+// Load Express routes
 var loadRoutes = function(path) {
   fs.readdirSync(path).forEach(function(file) {
     var routerPath = path + '/' + file;
