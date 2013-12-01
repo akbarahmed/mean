@@ -54,7 +54,7 @@ module.exports = function(grunt) {
                 },
             },
             js: {
-                files: ['public/js/**', 'app/**/*.js'],
+                files: ['public/js/**', 'app/**/*.js', 'server/**/*.js'],
                 tasks: ['jshint'],
                 options: {
                     livereload: true,
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            all: ['gruntfile.js', 'public/js/**/*.js', 'test/**/*.js', 'app/**/*.js'],
+            all: ['gruntfile.js', 'public/js/**/*.js', 'test/**/*.js', 'app/**/*.js', 'server/**/*.js'],
             options: {
                 ignores: ['public/js/lib/**/*.js']
             }
