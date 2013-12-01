@@ -1,4 +1,7 @@
-//Global service for global variables
+/**
+ * @file Global service for global variables
+ * @module services/global
+ */
 angular.module('mean.system').factory("Global", [
     function() {
         var _this = this;
@@ -10,3 +13,4 @@ angular.module('mean.system').factory("Global", [
         return _this._data;
     }
 ]);
+

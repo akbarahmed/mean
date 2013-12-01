@@ -1,8 +1,9 @@
 /**
- * Module dependencies.
+ * @file Index controller
+ * @module controllers/index
  */
 var mongoose = require('mongoose'),
-    _ = require('underscore');
+    _        = require('underscore');
 
 
 exports.render = function(req, res) {
@@ -10,3 +11,4 @@ exports.render = function(req, res) {
         user: req.user ? JSON.stringify(req.user) : "null"
     });
 };
+

@@ -76,3 +76,4 @@ module.exports = function(app, passport, auth) {
     app.get('/', index.render);
 
 };
+

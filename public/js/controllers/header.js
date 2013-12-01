@@ -11,3 +11,4 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
     
     $scope.isCollapsed = false;
 }]);
+
